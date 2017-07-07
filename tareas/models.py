@@ -1,9 +1,8 @@
 from django.db import models
+from django.utils import timezone
+
 from django.contrib.auth.models import User
 
-
-class Categoria(models.Model):
-    pass
 
 class Tarea(models.Model):
     URGENTE=10
@@ -23,7 +22,22 @@ class Tarea(models.Model):
     fecha_creacion = models.DateField((), auto_now_add = True)
     estado = models.CharField(max_length=15, choices=RANGO_DE_ESTADOS)
 
+    def __str__(self):
+        return self.titulo
+
+
+# Create your models here.
+
+class Categoria(models.Model):
+      nombre = models.CharField(max_length = 200)
+
+      def __str__(self):
+          return self.nombre
+
 class Comentario(models.Model):
-    pass
+      comentario = models.ForeignKey(Tarea)
+      usuario = models.ForeignKey(User)
+      fecha = models.DateTimeField(default= timezone.now)
+      texto = models.TextField()
 
-
+   
