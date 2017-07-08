@@ -24,7 +24,7 @@ def comentario(request):
             return redirect('/comentarios')
     filtro = request.GET.get('nombre')
     if filtro:
-        comentarios = Comentario.objects.filter(nombre=filtro).order_by('-fecha')
+        comentarios = Comentario.objects.filter(usuario=filtro).order_by('-fecha')
     else:
         comentarios= Comentario.objects.all().order_by('-fecha')
     

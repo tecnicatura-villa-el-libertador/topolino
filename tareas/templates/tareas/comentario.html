@@ -1,27 +1,27 @@
-<html>
-<head>
-	<title>COMENTARIOS</title>
-</head>
-<body>
-	<h1>COMENTARIOS</H1>
-
-	{% for c in comentarios %}
+	{% extends 'tareas/base.html' %}
 
 
-	<div>
-		<p>{{c.nombre}}</p>
-		<p>{{c.fecha}}</p>
-		<p>{{c.texto}}</p>
+
+	 {% block content %}
+		 <div class="page-header">COMENTARIOS</div>
+
+		{% for c in comentarios %}
+
+
+		<div>
+			<p>{{c.usuario}}</p>
+			<p>{{c.fecha}}</p>
+			<p>{{c.texto}}</p>
+		</div>
+		{% endfor %}
+
+		<div>
+
+	        <form method="POST" class="post-form">{% csrf_token %}
+	            {{ form.as_p }}
+	        <button type="submit" class="save btn btn-default">Comentar</button>
+	        </form>
+
 	</div>
-	{% endfor %}
+	{% endblock content %}
 
-	<div>
-
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Comentar</button>
-        </form>
-
-</div>
-</body>
-</html>
