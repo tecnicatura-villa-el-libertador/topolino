@@ -1,0 +1,16 @@
+<html>
+<body>
+
+    {% block content %}
+{% for tarea in tareas %}
+	{{tarea.id}} <br>
+	{{tarea.titulo}}<br>
+	{{tarea.estado}}<br>
+	{{tarea.fecha_creacion}}<br>
+	{{tarea.usuario}}
+
+{% endfor %}
+
+    {% endblock %}
+</body>
+</html>

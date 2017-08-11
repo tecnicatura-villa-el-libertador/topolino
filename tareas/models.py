@@ -35,9 +35,7 @@ class Categoria(models.Model):
           return self.nombre
 
 class Comentario(models.Model):
-      comentario = models.ForeignKey(Tarea)
+      tarea = models.ForeignKey(Tarea, null=True)
       usuario = models.ForeignKey(User)
       fecha = models.DateTimeField(default= timezone.now)
       texto = models.TextField()
-
-   

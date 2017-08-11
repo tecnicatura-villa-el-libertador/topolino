@@ -20,4 +20,5 @@ from tareas import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^comentarios/', views.comentario),
+    url(r'^tareas/', views.lista_tareas),
 ]
