@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from .models import Categoria,Comentario,Tarea
 from .forms import Comentarios
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def nombrecat(request):
     cat = Categoria.Object.all()
 
-
+@login_required
 def comentario(request):
     form = Comentarios()
    
@@ -34,3 +34,6 @@ def lista_tareas(request):
     
     tareas = Tarea.objects.all()
     return render(request, "tareas/tareas.html",{"tareas": tareas})
+
+
+

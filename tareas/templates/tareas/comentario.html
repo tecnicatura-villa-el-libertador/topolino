@@ -1,8 +1,12 @@
 	{% extends 'tareas/base.html' %}
 	 {% block content %}
-		 <div class="page-header">COMENTARIOS</div>
 
+		{% block arriba %}
+
+		
 		{% for c in comentarios %}
+
+
 
 		<div>
 			<p>{{c.usuario}}</p>
@@ -11,11 +15,15 @@
 		</div>
 		{% endfor %}
 
+		{% endblock %}
+
+
 		<div>
+
 
 	        <form method="POST" class="post-form">{% csrf_token %}
 	            {{ form.as_p }}
-	        <button type="submit" class="save btn btn-default">Comentar</button>
+	        <button type="submit" class="save btn btn-default">{% block submit %}Comentar{% endblock %}</button>
 	        </form>
 
 	</div>
