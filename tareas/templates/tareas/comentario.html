@@ -1,20 +1,47 @@
 	{% extends 'tareas/base.html' %}
+{% load staticfiles %}
+    {% load markdown_deux_tags %}
+	{% block extrahead %}{{ form.media}} 	{% endblock %} 
+    {% block css %} 
+    <link rel="stylesheet" href="{% static 'css/comentarios.css' %}">   
+    {% endblock %}
 	 {% block content %}
 
 		{% block arriba %}
+<div class="container">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+	<div class="row">
+	<!-- Contenedor Principal -->
+    <div class="comments-container">
+    	<h1>Comentarios </h1>
+		
+		<ul id="comments-list" class="comments-list">
+		{% for c in comentarios %}
+            <li>
+				<div class="comment-main-level">
+					
+					<!-- Contenedor del Comentario -->
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name by-author"><a><p>{{c.usuario}}</p></a></h6>
+							<span><p>{{c.fecha}}</p></span>
+							<i class="fa fa-reply"></i>
+							<i class="fa fa-heart"></i>
+						</div>
+						<div class="comment-content"><p>{{c.texto|markdown}}</p>
+						</div>
+					</div>
+				</div>
+
+            </li>
+{% endfor %}
+        </ul>
+    </div>
+	</div>
+</div>
 
 		
-		{% for c in comentarios %}
-
-
-
-		<div>
-			<p>{{c.usuario}}</p>
-			<p>{{c.fecha}}</p>
-			<p>{{c.texto}}</p>
-		</div>
-		{% endfor %}
-
+		
 		{% endblock %}
 
 
