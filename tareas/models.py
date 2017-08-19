@@ -13,6 +13,7 @@ class Tarea(models.Model):
     EN_CURSO = 'En curso'
     PENDIENTE = 'Pendiente'
     FINALIZADO = 'Finalizado'
+    
     RANGO_DE_ESTADOS = ((INVALIDO,'Invalido'),(EN_CURSO,'En curso'),(PENDIENTE,'Pendiente'),(FINALIZADO,'Finalizado'))
     usuario = models.ForeignKey(User)
     categoria = models.ForeignKey('Categoria')
@@ -20,7 +21,7 @@ class Tarea(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField()
     fecha_creacion = models.DateField((), auto_now_add = True)
-    estado = models.CharField(max_length=15, choices=RANGO_DE_ESTADOS)
+    estado = models.CharField(max_length=15, choices=RANGO_DE_ESTADOS,default=PENDIENTE)
 
     def __str__(self):
         return self.titulo
@@ -39,3 +40,6 @@ class Comentario(models.Model):
       usuario = models.ForeignKey(User)
       fecha = models.DateTimeField(default= timezone.now)
       texto = models.TextField()
+
+      
+      
