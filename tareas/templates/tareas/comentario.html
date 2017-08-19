@@ -1,4 +1,5 @@
 	{% extends 'tareas/base.html' %}
+	{% load bootstrap3 %}
 	 {% block content %}
 
 		{% block arriba %}
@@ -22,8 +23,14 @@
 
 
 	        <form method="POST" class="post-form">{% csrf_token %}
-	            {{ form.as_p }}
-	        <button type="submit" class="save btn btn-default">{% block submit %}Comentar{% endblock %}</button>
+	        {% bootstrap_form form %}
+  			{% buttons %}
+   			 <button type="submit" class="btn btn-primary">
+      		 	{% block submit %}Comentar
+      		 	{% endblock %} 
+      		 </button>	
+  			{% endbuttons %}
+	        
 	        </form>
 
 	</div>
