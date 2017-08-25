@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tareas',
-    'bootstrap3'
+    'bootstrap3',
   	'pagedown',
     'markdown_deux',
 ]
@@ -124,4 +124,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'   
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
