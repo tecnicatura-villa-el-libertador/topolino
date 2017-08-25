@@ -41,5 +41,3 @@ class Comentario(models.Model):
       fecha = models.DateTimeField(default= timezone.now)
       texto = models.TextField()
 
-      
-      
