@@ -1,0 +1,17 @@
+{% extends 'tareas/base.html' %}
+	{% block titulo %}EDITAR TAREAS{% endblock %}
+	{% block header %}EDITAR TAREAS{% endblock %}
+
+
+ {% block content %}
+	<div>
+
+		<form method="POST" class="post-form">{% csrf_token %}
+		{{ form.as_p }}
+
+		<button type="submit" class="save btn btn-default">{% block submit %}enviar{% endblock %}</button>
+	     </form>
+
+	</div>
+
+ {% endblock content %}
