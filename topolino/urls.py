@@ -23,7 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^comentarios/', views.comentario),
     url(r'^tareas/', views.lista_tareas),
-	
-    url('^', include('django.contrib.auth.urls')),
-
+    url(r'^editar_tareas/', views.editar_tareas),
+    url('^',include('django.contrib.auth.urls')),
 ]
