@@ -7,9 +7,9 @@ from pagedown.widgets import PagedownWidget
 
 # creo un formulario con el campo texto para mostrar
 class Comentarios(forms.ModelForm):
-	  class Meta:
-		  model= Comentario
-		  fields=['texto']
+      class Meta:
+          model= Comentario
+          fields=['texto']
 
 class RegistroForm(UserCreationForm): 
     class Meta:
@@ -18,7 +18,7 @@ class RegistroForm(UserCreationForm):
         field_classes = {'username': UsernameField}
 
 # creo un formulario con el campo texto para mostrar
-class Comentarios(forms.ModelForm):
+class ComentarioForm(forms.ModelForm):
 
     texto = forms.CharField(widget=PagedownWidget(show_preview=False))
     class Meta:
@@ -28,4 +28,4 @@ class Comentarios(forms.ModelForm):
 class TareaForm(forms.ModelForm):
     class Meta:
         model = Tarea
-		    fields = ['titulo', 'descripcion', 'categoria', 'prioridad']   
+        fields = ['titulo', 'descripcion', 'categoria', 'prioridad']   
