@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Categoria,Comentario,Tarea
 from .forms import ComentarioForm, TareaForm
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def nombrecat(request):
     cat = Categoria.Object.all()
@@ -35,6 +36,24 @@ def lista_tareas(request):
     tareas = Tarea.objects.all()
     return render(request, "tareas/tareas.html",{"tareas": tareas})
 
+def register(request):
+    if request.method == 'POST':
+         form = RegistroForm(request.POST)
+         #form = UserCreationForm(request.POST)
+         if form.is_valid():
+             form.save()
+             return redirect('/accounts/login/')
+
+    else:
+        form = RegistroForm()
+    token = {}
+            #token.update(csrf(request))
+    token['form'] = form
+
+    return render(request,'registration/registro.html',token)
+
+def home(request):
+    return redirect('/accounts/login/')
 
 def editar_tareas(request):
     form= TareaForm()
@@ -52,3 +71,4 @@ def editar_tareas(request):
     return render(request, "tareas/editar_tareas.html",{"form": form})
 
 
+     

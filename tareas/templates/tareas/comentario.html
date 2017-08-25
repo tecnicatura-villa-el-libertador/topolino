@@ -1,6 +1,5 @@
 	{% extends 'tareas/base.html' %}
-{% load staticfiles %}
-    {% load markdown_deux_tags %}
+	{% load bootstrap3 load staticfiles markdown_deux_tags %}
 	{% block extrahead %}{{ form.media}} 	{% endblock %} 
     {% block css %} 
     <link rel="stylesheet" href="{% static 'css/comentarios.css' %}">   
@@ -49,8 +48,14 @@
 
 
 	        <form method="POST" class="post-form">{% csrf_token %}
-	            {{ form.as_p }}
-	        <button type="submit" class="save btn btn-default">{% block submit %}Comentar{% endblock %}</button>
+	        {% bootstrap_form form %}
+  			{% buttons %}
+   			 <button type="submit" class="btn btn-primary">
+      		 	{% block submit %}Comentar
+      		 	{% endblock %} 
+      		 </button>	
+  			{% endbuttons %}
+	        
 	        </form>
 
 	</div>
