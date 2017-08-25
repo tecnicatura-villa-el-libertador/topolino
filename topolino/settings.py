@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tareas',
     'bootstrap3'
+  	'pagedown',
+    'markdown_deux',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -121,3 +123,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'   

@@ -1,16 +1,19 @@
-<html>
-<body>
+{% extends 'tareas/base.html' %}
 
+    {% block titulo %}TAREAS{% endblock %}
+    {% block header %}TAREAS{% endblock %}
     {% block content %}
-{% for tarea in tareas %}
-	{{tarea.id}} <br>
-	{{tarea.titulo}}<br>
-	{{tarea.estado}}<br>
-	{{tarea.fecha_creacion}}<br>
-	{{tarea.usuario}}
 
-{% endfor %}
+	{% for tarea in tareas %}
+		<p>Tarea N°: {{tarea.id}}</p>
+		
+		<p>{{tarea.estado}}</p>
+		{{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
+		{{tarea.titulo}}<br>
+		{{tarea.descripcion}}<br>
+
+
+	{% endfor %}
 
     {% endblock %}
-</body>
-</html>
+
