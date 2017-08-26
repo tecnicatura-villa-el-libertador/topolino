@@ -53,7 +53,7 @@ def register(request):
     return render(request,'registration/registro.html',token)
 
 def home(request):
-    return redirect('/comentarios/')
+    return redirect('/login/')
 
 def editar_tareas(request):
     form= TareaForm()
