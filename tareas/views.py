@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import Categoria,Comentario,Tarea
 from .forms import ComentarioForm, TareaForm
 from django.contrib.auth.decorators import login_required
@@ -8,9 +8,10 @@ def nombrecat(request):
     cat = Categoria.Object.all()
 
 @login_required
-def comentario(request):
+def comentario(request,id):
     form = ComentarioForm()
-   
+        
+    tarea=get_object_or_404(Tarea, id=id)
 
     if request.method == "POST":
 
@@ -20,16 +21,17 @@ def comentario(request):
 
             comentario = form.save(commit=False)
             comentario.usuario = request.user
+            comentario.tarea = tarea
            
             comentario.save()
-            return redirect('/comentarios')
+            return redirect(tarea)
     filtro = request.GET.get('usuario')
     if filtro:
-        comentarios = Comentario.objects.filter(usuario__username=filtro).order_by('-fecha')
+        comentarios = Comentario.objects.filter(tarea=tarea, usuario__username=filtro).order_by('-fecha')
     else:
-        comentarios= Comentario.objects.all().order_by('-fecha')
+        comentarios= Comentario.objects.filter(tarea=tarea).order_by('-fecha')
     
-    return render(request,'tareas/comentario.html', {'form':form,'comentarios':comentarios})
+    return render(request,'tareas/comentario.html', {'form':form,'comentarios':comentarios, 'tarea':tarea})
 
 def lista_tareas(request):
     
@@ -68,6 +70,7 @@ def editar_tareas(request):
             tarea.usuario = request.user
            
             tarea.save()	
+            return redirect(tarea)
     return render(request, "tareas/editar_tareas.html",{"form": form})
 
 
