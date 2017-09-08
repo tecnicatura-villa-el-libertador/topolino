@@ -1,14 +1,17 @@
-	{% extends 'tareas/base.html' %}
+	{% extends 'tareas/forms.html' %}
 	{% load bootstrap3 staticfiles markdown_deux_tags %}
+
 	{% block extrahead %}{{ form.media}} 	{% endblock %} 
     {% block css %} 
     <link rel="stylesheet" href="{% static 'css/comentarios.css' %}">   
     {% endblock %}
 	 {% block content %}
+
     <p>{{tarea.estado}}</p>
 		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
 		
 		{{tarea.descripcion|markdown}} <br>
+
 		{% block arriba %}
 <div class="container">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -50,17 +53,13 @@
 		<div>
 
 
-	        <form method="POST" class="post-form">{% csrf_token %}
-	        {% bootstrap_form form %}
-  			{% buttons %}
-   			 <button type="submit" class="btn btn-primary">
+	   
       		 	{% block submit %}Comentar
       		 	{% endblock %} 
-      		 </button>	
-  			{% endbuttons %}
-	        
-	        </form>
 
+
+{{block.super}}
 	</div>
 	{% endblock content %}
+  
 
