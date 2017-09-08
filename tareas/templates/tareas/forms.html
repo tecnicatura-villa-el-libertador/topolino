@@ -1,0 +1,26 @@
+{% extends 'tareas/base.html' %}
+{% load bootstrap3 staticfiles markdown_deux_tags %}
+
+ {% block content %}
+ 
+
+
+
+<div>
+
+
+	        <form method="POST" class="post-form">{% csrf_token %}
+	        {% bootstrap_form form %}
+  			{% buttons %}
+   			 <button type="submit" class="btn btn-primary">
+      		 	{% block submit %}
+      		 	{% endblock %} 
+      		 </button>	
+  			{% endbuttons %}
+	        
+	        </form>
+
+	</div>
+
+	
+     {% endblock %}
