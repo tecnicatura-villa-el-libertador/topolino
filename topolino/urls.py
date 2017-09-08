@@ -17,10 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from tareas import views
 from django.contrib.auth import views as auth_views
+
 urlpatterns = [
 	url(r'^$',views.home),
     url(r'^accounts/login/$', auth_views.LoginView.as_view()),
-    url(r'^accounts/logout/$', auth_views.LogoutView.as_view()),
+    url(r'^accounts/logout/$', auth_views.LogoutView.as_view(),
     url(r'^admin/', admin.site.urls),
     url(r'^tareas/(?P<id>[0-9]+)/$', views.comentario),
     url(r'^tareas/', views.lista_tareas),
