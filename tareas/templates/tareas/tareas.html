@@ -9,10 +9,10 @@
 		
 		<p>{{tarea.estado}}</p>
 		{{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
-		{{tarea.titulo}}<br>
-		{{tarea.descripcion}}<br>
+		<h1> <a href="/tareas/{{tarea.id}}/">{{tarea.titulo}}</a><br></h1>
+		<br>
 
-
+    
 	{% endfor %}
 
     {% endblock %}

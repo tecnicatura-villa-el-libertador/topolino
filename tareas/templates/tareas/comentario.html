@@ -7,6 +7,10 @@
     {% endblock %}
 	 {% block content %}
 
+    <p>{{tarea.estado}}</p>
+		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
+		
+		{{tarea.descripcion|markdown}} <br>
 
 		{% block arriba %}
 <div class="container">

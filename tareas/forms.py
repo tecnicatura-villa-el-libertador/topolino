@@ -26,6 +26,7 @@ class ComentarioForm(forms.ModelForm):
         fields=['texto']
 
 class TareaForm(forms.ModelForm):
+    descripcion = forms.CharField(widget=PagedownWidget(show_preview=False))
     class Meta:
         model = Tarea
         fields = ['titulo', 'descripcion', 'categoria', 'prioridad']   

@@ -15,7 +15,7 @@
 <body>
 {% bootstrap_messages %}    
     
-      <div class="page-header">{% block header %}COMENTARIOS{% endblock %}{% if request.user.is_authenticated %}
+      <div class="page-header">{% block header %}{{tarea.titulo}}{% endblock %}{% if request.user.is_authenticated %}
     <a href="/accounts/logout/">Cerrar Sesion</a>
 
     {% endif %}</div>

@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.LoginView.as_view()),
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view()),
     url(r'^admin/', admin.site.urls),
-    url(r'^comentarios/', views.comentario),
+    url(r'^tareas/(?P<id>[0-9]+)/$', views.comentario),
     url(r'^tareas/', views.lista_tareas),
     url(r'^registration/registro.html',views.register),
     url(r'^editar_tareas/', views.editar_tareas),
