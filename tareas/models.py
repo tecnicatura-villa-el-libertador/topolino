@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from pagedown.widgets import PagedownWidget
 from django.contrib.auth.models import User
 
 
@@ -19,13 +19,15 @@ class Tarea(models.Model):
     categoria = models.ForeignKey('Categoria')
     prioridad = models.IntegerField(choices=RANGO_DE_PRIORIDAD)
     titulo = models.CharField(max_length=50)
-    descripcion = models.TextField()
+    descripcion = models.TextField(max_length=1000)
     fecha_creacion = models.DateField((), auto_now_add = True)
     estado = models.CharField(max_length=15, choices=RANGO_DE_ESTADOS,default=PENDIENTE)
 
     def __str__(self):
         return self.titulo
 
+    def get_absolute_url(self):
+        return '/tareas/{}/'.format(self.id)
 
 # Create your models here.
 

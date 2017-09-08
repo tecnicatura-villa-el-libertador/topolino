@@ -1,17 +1,18 @@
 {% extends 'tareas/base.html' %}
 	{% block titulo %}EDITAR TAREAS{% endblock %}
+    {% load bootstrap3 staticfiles markdown_deux_tags %}
 	{% block header %}EDITAR TAREAS{% endblock %}
-
+    {% block extrahead %}{{ form.media}} 	{% endblock %} 
 
  {% block content %}
 	<div>
 
 		<form method="POST" class="post-form">{% csrf_token %}
-		{{ form.as_p }}
+		{{ form.as_p}}
+
 
 		<button type="submit" class="save btn btn-default">{% block submit %}enviar{% endblock %}</button>
 	     </form>
 
-	</div>
 
  {% endblock content %}
