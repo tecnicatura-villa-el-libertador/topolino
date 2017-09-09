@@ -64,12 +64,10 @@ def editar_tareas(request):
 
         form = TareaForm(request.POST)
         if form.is_valid():
-         
-
+        
             tarea = form.save(commit=False)
             tarea.usuario = request.user
-           
-            tarea.save()	
+            tarea.save()
             return redirect(tarea)
     return render(request, "tareas/editar_tareas.html",{"form": form})
 
