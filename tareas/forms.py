@@ -29,4 +29,18 @@ class TareaForm(forms.ModelForm):
     descripcion = forms.CharField(widget=PagedownWidget(show_preview=False))
     class Meta:
         model = Tarea
-        fields = ['titulo', 'descripcion', 'categoria', 'prioridad']   
+        fields = ['titulo', 'descripcion', 'categoria', 'prioridad']
+
+class Tarea_estado(forms.ModelForm):
+	class Meta:
+		model = Tarea
+		fields= ['estado']
+	
+
+
+
+
+
+
+
+
