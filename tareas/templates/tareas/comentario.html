@@ -7,7 +7,18 @@
     {% endblock %}
 	 {% block content %}
 
-    <p>{{tarea.estado}}</p>
+    <p>{% if request.user.is_staff %}
+			<form method="POST" class="post-form">{% csrf_token %}
+	        {% bootstrap_form form_estado %}
+  			{% buttons %}
+   			 <button name="submit_estado" type="submit" class="btn btn-primary">
+      		 	MODIFICAR
+      		 </button>	
+  			{% endbuttons %}
+	        
+	        </form>
+	{% endif %}
+	</p>
 		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
 		
 		{{tarea.descripcion|markdown}} <br>
@@ -19,6 +30,7 @@
 	<!-- Contenedor Principal -->
     <div class="comments-container">
     	<h1>Comentarios </h1>
+	
 		
 		<ul id="comments-list" class="comments-list">
 		{% for c in comentarios %}
