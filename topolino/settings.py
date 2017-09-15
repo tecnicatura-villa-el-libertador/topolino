@@ -128,4 +128,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGOUT_REDIRECT_URL='/comentarios/'
 
-LOGIN_REDIRECT_URL='/comentarios/'
+LOGIN_REDIRECT_URL='/tareas/'
