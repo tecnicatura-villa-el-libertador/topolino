@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Categoria,Comentario,Tarea
-from .forms import ComentarioForm, TareaForm, Tarea_estado
+from .forms import ComentarioForm, TareaForm, Tarea_estado, BuscarForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -9,11 +9,13 @@ def nombrecat(request):
 
 @login_required
 def comentario(request,id):
+
     form = ComentarioForm()
     tarea=get_object_or_404(Tarea, id=id)
     form_estado= Tarea_estado(instance=tarea)
     if request.method == "POST":
         if 'submit_estado' in request.POST:
+            #import ipdb;ipdb.set_trace  
             form_estado = Tarea_estado(request.POST, instance=tarea)
             if form_estado.is_valid():
                 form_estado.save()
@@ -37,9 +39,15 @@ def comentario(request,id):
 
 @login_required
 def lista_tareas(request):
-    
+    form=BuscarForm()
     tareas = Tarea.objects.all()
-    return render(request, "tareas/tareas.html",{"tareas": tareas})
+    if request.method == "GET":
+        if request.GET:
+            form = BuscarForm(request.GET)
+            if form.is_valid():
+                tareas=tareas.filter(titulo__icontains=form.cleaned_data['buscar'])
+
+    return render(request, "tareas/tareas.html",{"tareas": tareas,"form":form})
 
 def register(request):
     if request.method == 'POST':
@@ -75,4 +83,13 @@ def editar_tareas(request):
     return render(request, "tareas/editar_tareas.html",{"form": form})
 
 
-     
+def buscar(request):
+    form=BuscarForm()
+    filtro = request.GET.get('titulo')
+    if filtro:
+        tareas = Tarea.objects.filter(tarea=tarea, titulo=filtro).order_by('-fecha')
+    else:
+        tareas= Tareas.objects.filter(tarea=tarea).order_by('-fecha')
+    return render(request, "tareas/tareas.html",{"form": form})
+
+

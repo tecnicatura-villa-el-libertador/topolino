@@ -36,8 +36,8 @@ class Tarea_estado(forms.ModelForm):
 		model = Tarea
 		fields= ['estado']
 	
-
-
+class BuscarForm(forms.Form):
+	buscar= forms.CharField(max_length=50)
 
 
 

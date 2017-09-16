@@ -1,12 +1,24 @@
 {% extends 'tareas/base.html' %}
 
     {% block titulo %}TAREAS{% endblock %}
-    {% block header %}TAREAS{% endblock %}
+    {% block detalle_tarea %}<div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>{% endblock %}
     {% block content %}
 	<div class="container">
+
+	
+	<form method="GET" class="post-form">{{ form.as_p}}
+
+
+		<button type="submit" class="save btn btn-default">{% block submit %}BUSCAR{% endblock %}</button>
+
+   
+    
 		<div class="row">
 			<div class="span5">
 	            <table class="table table-striped table-condensed">
+		
+		
+		    {% if tareas %}
 	             	<thead>
 	                  <tr>
 		              	  <th>Titulo</th>
@@ -34,7 +46,11 @@
 	                    <td><span class="label label-default">{{tarea.estado}}</span>
 	                    </td>                                       
 	                </tr>
-	              {% endfor %}                                
+	              {% endfor %}  
+	 	    
+		    {% else %} 
+			<p>NO SE ENCUENTRA LA TAREA  </p>
+		    {% endif %}                            
 	              </tbody>
 	            </table>
 	        </div>
