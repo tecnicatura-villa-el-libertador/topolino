@@ -5,6 +5,11 @@
     {% block css %} 
     <link rel="stylesheet" href="{% static 'css/comentarios.css' %}">   
     {% endblock %}
+    {% block detalle_tarea %}
+	<div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>
+    {% endblock %}
+	
+
 	 {% block content %}
 
     <p>{% if request.user.is_staff %}
