@@ -45,3 +45,13 @@
     .post h1 a, .post h1 a:visited {
         color: #000000;
     }
+
+    .cerrar_sesion{
+         float: right;
+    }
+    .titulo_tareas{
+	font-size: 20pt;
+}
+.tarea_titulo{
+	margin-left: 37%;
+}
