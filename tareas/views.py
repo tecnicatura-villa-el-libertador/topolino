@@ -13,12 +13,21 @@ def comentario(request,id):
     form = ComentarioForm()
     tarea=get_object_or_404(Tarea, id=id)
     form_estado= Tarea_estado(instance=tarea)
+    estado_viejo = tarea.estado 
     if request.method == "POST":
         if 'submit_estado' in request.POST:
             #import ipdb;ipdb.set_trace  
             form_estado = Tarea_estado(request.POST, instance=tarea)
             if form_estado.is_valid():
+                print(estado_viejo)
                 form_estado.save()
+                estado_nuevo = tarea.estado
+                print(estado_nuevo)
+                if estado_viejo != estado_nuevo:
+                    usuario = request.user
+                    texto = "{} cambió el estado de {} a {}".format(usuario, estado_viejo, estado_nuevo)
+                    Comentario(usuario=usuario,texto=texto, tarea=tarea, manual=False).save()
+
                 return redirect(tarea)
         else:
             form = ComentarioForm(request.POST)
@@ -82,7 +91,7 @@ def editar_tareas(request):
             return redirect(tarea)
     return render(request, "tareas/editar_tareas.html",{"form": form})
 
-
+  
 def buscar(request):
     form=BuscarForm()
     filtro = request.GET.get('titulo')
@@ -91,5 +100,4 @@ def buscar(request):
     else:
         tareas= Tareas.objects.filter(tarea=tarea).order_by('-fecha')
     return render(request, "tareas/tareas.html",{"form": form})
-
 

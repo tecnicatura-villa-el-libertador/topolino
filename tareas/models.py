@@ -42,6 +42,4 @@ class Comentario(models.Model):
       usuario = models.ForeignKey(User)
       fecha = models.DateTimeField(default= timezone.now)
       texto = models.TextField()
-
-
-
+      manual = models.BooleanField(default= True)
