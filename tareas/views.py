@@ -23,7 +23,7 @@ def comentario(request,id):
                 print(estado_nuevo)
                 if estado_viejo != estado_nuevo:
                     usuario = request.user
-                    texto = "{} cambiò el estado de {} a {}".format(usuario, estado_viejo, estado_nuevo)
+                    texto = "{} cambió el estado de {} a {}".format(usuario, estado_viejo, estado_nuevo)
                     Comentario(usuario=usuario,texto=texto, tarea=tarea, manual=False).save()
 
                 return redirect(tarea)
