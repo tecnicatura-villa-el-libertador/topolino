@@ -13,11 +13,12 @@
     <body>
     {% bootstrap_messages %}    
     <div class="page-header">
+	 {% block detalle_tarea %}{% endblock %}
         {% block header %}
-            {{tarea.titulo}}
+          <div class="tarea_titulo">{{tarea.titulo}}</div>
         {% endblock %}
         {% if request.user.is_authenticated %}
-            <a href="/accounts/logout/">Cerrar Sesion</a>
+            <div class="cerrar_sesion"><a href="/accounts/logout/">Cerrar Sesion</a></div>
         {% endif %}
     </div>
 	 {% block content %}

@@ -126,6 +126,6 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LOGOUT_REDIRECT_URL='/comentarios/'
+LOGOUT_REDIRECT_URL='/login/'
 
 LOGIN_REDIRECT_URL='/tareas/'
