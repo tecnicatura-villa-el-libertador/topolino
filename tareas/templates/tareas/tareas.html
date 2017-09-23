@@ -21,12 +21,12 @@
 		    {% if tareas %}
 	             	<thead>
 	                  <tr>
-		              	  <th>Titulo</th>
-		                  <th>Autor</th>
-		                  <th>Fecha</th>
-		                  <th>Categoria</th>
-		                  <th>Prioridad</th>
-	                      <th>Estado</th>                                       
+		              	  <th><a href="?o=titulo&s={{s}}">Titulo</a>{% if o == "titulo" %}{% if s == "asc" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+		                  <th><a href="?o=usuario&s={{s}}"">Autor</a></th>
+		                  <th><a href="?o=fecha_creacion&s={{s}}">Fecha</a></th>
+		                  <th><a href="?o=categoria__nombre&s={{s}}"">Categoria</a></th>
+		                  <th><a href="?o=prioridad&s={{s}}"">Prioridad</a></th>
+	                          <th><a href="?o=estado&s={{s}}"">Estado</a></th>                                       
 	                 	</tr>
 	              	</thead>   
 	              <tbody>

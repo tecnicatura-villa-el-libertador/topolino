@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from .models import Categoria,Comentario,Tarea
 from .forms import ComentarioForm, TareaForm, Tarea_estado, BuscarForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 def nombrecat(request):
@@ -49,14 +50,28 @@ def comentario(request,id):
 @login_required
 def lista_tareas(request):
     form=BuscarForm()
+    o = request.GET.get("o")
+    s=request.GET.get("s")
     tareas = Tarea.objects.all()
+    
+    
+    if s=="des":
+        orden='-' + o
+        s = "asc"
+    else:
+        orden = o
+        s = "des"
+    if orden:
+        tareas = tareas.order_by(orden)
     if request.method == "GET":
         if request.GET:
             form = BuscarForm(request.GET)
-            if form.is_valid():
-                tareas=tareas.filter(titulo__icontains=form.cleaned_data['buscar'])
+            if form.is_valid():# "Q" sirve para hacer filtros de diferentes campos.
+                q1=Q(titulo__icontains=form.cleaned_data['buscar'])
+                q2=Q(descripcion__icontains=form.cleaned_data['buscar'])
+                tareas=tareas.filter(q1|q2)
 
-    return render(request, "tareas/tareas.html",{"tareas": tareas,"form":form})
+    return render(request, "tareas/tareas.html",{"tareas": tareas,"form":form,"s":s, 'o': o})
 
 def register(request):
     if request.method == 'POST':
