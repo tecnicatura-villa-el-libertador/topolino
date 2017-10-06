@@ -24,9 +24,29 @@
 	        </form>
 	{% endif %}
 	</p>
-		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
+    
+<div class="container">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+	<div class="row">
+	<!-- Contenedor Principal -->
+    	<div class="comments-container">
+			<div class="comment-main-level">
+					
+				<!-- Contenedor del Comentario -->
+				<div class="comment-box">
+					<div class="comment-head">
+
+		 				<h1>Descripción</h1>
+		 				{{tarea.usuario}} 
+		 				<h5>{{tarea.fecha_creacion}}</h5> <br><br>
+						{{tarea.descripcion|markdown}} <a href="/editar_tareas/{{tarea.id}}">EDITAR</a> <br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 		
-		{{tarea.descripcion|markdown}} <br>
 
 		{% block arriba %}
 <div class="container">
@@ -40,23 +60,22 @@
 		<ul id="comments-list" class="comments-list">
 		{% for c in comentarios %}
             <li>
-				<div class="comment-main-level">
+					<div class="comment-main-level">
 					
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name by-author"><a><p>{{c.usuario}}</p></a></h6>
-							<span><p>{{c.fecha}}</p></span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
-						</div>
-						<div class="comment-content"><p>{{c.texto|markdown}}</p>
+						<!-- Contenedor del Comentario -->
+						<div class="comment-box">
+								<div class="comment-head">
+									<h6 class="comment-name by-author"><a><p>{{c.usuario}}</p></a></h6>
+									<span><p>{{c.fecha}}</p></span>
+									<i class="fa fa-reply"></i>
+									<i class="fa fa-heart"></i>
+								</div>
+							<div class="comment-content"><p>{{c.texto|markdown}}</p></div>
 						</div>
 					</div>
-				</div>
 
-            </li>
-{% endfor %}
+            	</li>
+			{% endfor %}
         </ul>
     </div>
 	</div>
@@ -67,7 +86,7 @@
 		{% endblock %}
 
 
-		<div>
+			<div>
 
 
 	   
@@ -75,8 +94,8 @@
       		 	{% endblock %} 
 
 
-{{block.super}}
-	</div>
+				{{block.super}}
+			</div>
 	{% endblock content %}
   
 

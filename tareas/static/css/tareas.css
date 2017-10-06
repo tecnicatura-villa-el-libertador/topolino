@@ -18,6 +18,10 @@
         font-family: 'Lobster', cursive;
     }
 
+    h5 {
+        font-family: 'Lobster', cursive; text-align: right; 
+    }
+
     .date {
         float: right;
         color: #828282;

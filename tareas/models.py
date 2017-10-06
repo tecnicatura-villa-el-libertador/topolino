@@ -38,6 +38,7 @@ class Categoria(models.Model):
           return self.nombre
 
 class Comentario(models.Model):
+      # relaciono un comentario a una tarea a traves de su clave foranea
       tarea = models.ForeignKey(Tarea, null=True)
       usuario = models.ForeignKey(User)
       fecha = models.DateTimeField(default= timezone.now)

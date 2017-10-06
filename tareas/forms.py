@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from pagedown.widgets import PagedownWidget
 
 
-# creo un formulario con el campo texto para mostrar
+# creo un formulario que hereda de Comentario y agrega el atributo fields(campo texto) con el campo texto para mostrar
 class Comentarios(forms.ModelForm):
       class Meta:
           model= Comentario
@@ -23,7 +23,7 @@ class ComentarioForm(forms.ModelForm):
     texto = forms.CharField(widget=PagedownWidget(show_preview=False))
     class Meta:
         model = Comentario
-        fields=['texto']
+        fields = ['texto']
 
 class TareaForm(forms.ModelForm):
     descripcion = forms.CharField(widget=PagedownWidget(show_preview=False))

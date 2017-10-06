@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^tareas/(?P<id>[0-9]+)/$', views.comentario),
     url(r'^tareas/', views.lista_tareas),
     url(r'^registration/registro.html',views.register),
-    url(r'^editar_tareas/', views.editar_tareas),
+    url(r'^editar_tareas/(?P<id>[0-9]+)/$', views.editar_tareas),
+    url(r'^editar_tareas/$', views.editar_tareas),
     url('^',include('django.contrib.auth.urls')),
 ]
