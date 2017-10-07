@@ -7,6 +7,7 @@
     {% endblock %}
     {% block detalle_tarea %}
 	<div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>
+    {% load poll_extras %}
     {% endblock %}
 	
 
@@ -50,7 +51,7 @@
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
 						</div>
-						<div class="comment-content"><p>{{c.texto|markdown}}</p>
+						<div class="comment-content"><p>{{c.texto|template_filter}}</p>
 						</div>
 					</div>
 				</div>
