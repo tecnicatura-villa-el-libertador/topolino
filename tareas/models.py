@@ -22,6 +22,7 @@ class Tarea(models.Model):
     descripcion = models.TextField(max_length=1000)
     fecha_creacion = models.DateField((), auto_now_add = True)
     estado = models.CharField(max_length=15, choices=RANGO_DE_ESTADOS,default=PENDIENTE)
+    asignado = models.CharField(max_length=100,default="sin asignacion")
 
     def __str__(self):
         return self.titulo
