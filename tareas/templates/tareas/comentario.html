@@ -43,6 +43,8 @@
             <li>
 				<div class="comment-main-level">
 					
+
+
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
@@ -51,10 +53,12 @@
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
 						</div>
-						<div class="comment-content"><p>{{c.texto|template_filter}}</p>
+						<div class="comment-content"><p>{{c.texto|markdown|template_filter}}</p>
 						</div>
+
 					</div>
-				</div>
+
+
 
             </li>
 {% endfor %}

@@ -26,6 +26,11 @@ class Tarea(models.Model):
     def __str__(self):
         return self.titulo
 
+
+    @property
+    def esta_finalizado(self):
+        return self.estado == Tarea.FINALIZADO
+        
     def get_absolute_url(self):
         return '/tareas/{}/'.format(self.id)
 
