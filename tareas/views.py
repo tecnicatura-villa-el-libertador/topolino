@@ -14,7 +14,7 @@ def comentario(request,id):
     form = ComentarioForm()
     tarea=get_object_or_404(Tarea, id=id)
     form_estado= Tarea_estado(instance=tarea)
-    tareas_asignado= tarea.asignado
+    
 
     estado_viejo = tarea.estado 
     if request.method == "POST":
@@ -35,10 +35,8 @@ def comentario(request,id):
                     texto = "{} cambió el estado de {} a {}".format(usuario, estado_viejo, estado_nuevo)
                     Comentario(usuario=usuario,texto=texto, tarea=tarea, manual=False).save()
                     if estado_nuevo== tarea.EN_CURSO:
-                       
-                        tareas_asignado=usuario
-                        tareas_asignado.save()
-                        #import pdb;pdb.set_trace()
+                        tarea.asignado=usuario
+                        tarea.save(update_fields=["asignado"])
                 return redirect(tarea)
         else:
             form = ComentarioForm(request.POST)
