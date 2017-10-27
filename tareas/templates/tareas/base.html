@@ -20,7 +20,9 @@
         {% if request.user.is_authenticated %}
             <div class="cerrar_sesion"><a href="/accounts/logout/">Cerrar Sesion</a></div>
         {% endif %}
+        {% block crear_tarea%}<div class="crear_tarea"><a href="/crear_tarea">Crear tareas</a></div>{% endblock %}
     </div>
+
 	 {% block content %}
      {% endblock %}
     </body>

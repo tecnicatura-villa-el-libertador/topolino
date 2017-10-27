@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from pagedown.widgets import PagedownWidget
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Tarea(models.Model):
@@ -22,6 +24,7 @@ class Tarea(models.Model):
     descripcion = models.TextField(max_length=1000)
     fecha_creacion = models.DateField((), auto_now_add = True)
     estado = models.CharField(max_length=15, choices=RANGO_DE_ESTADOS,default=PENDIENTE)
+    asignado = models.ForeignKey(User,null=True,related_name="tareas_asignada",limit_choices_to={'is_staff':True})
 
     def __str__(self):
         return self.titulo
@@ -43,3 +46,8 @@ class Comentario(models.Model):
       fecha = models.DateTimeField(default= timezone.now)
       texto = models.TextField()
       manual = models.BooleanField(default= True)
+
+
+@receiver(post_save)
+def my_callback(sender, instance, **kwargs):
+    print("llego señal post save", instance)
