@@ -1,15 +1,17 @@
-	{% extends 'tareas/forms.html' %}
-	{% load bootstrap3 staticfiles markdown_deux_tags %}
 
-	{% block extrahead %}{{ form.media}} 	{% endblock %} 
-    {% block css %} 
-    <link rel="stylesheet" href="{% static 'css/comentarios.css' %}">   
-    {% endblock %}
-    {% block detalle_tarea %}
-	<div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>
-    {% load poll_extras %}
-    {% endblock %}
-	
+{% extends 'tareas/forms.html' %}
+{% load bootstrap3 staticfiles markdown_deux_tags %}
+
+{% block content-size %}col-md-8 col-md-offset-2{% endblock content-size %}
+
+{% block extrahead %}{{ form.media}} 	{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/comentarios.css' %}">
+{% endblock %}
+{% block detalle_tarea %}
+    <div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>
+{% endblock %}
+
 
 	 {% block content %}
 
@@ -19,14 +21,14 @@
   			{% buttons %}
    			 <button name="submit_estado" type="submit" class="btn btn-primary">
       		 	MODIFICAR
-      		 </button>	
+      		 </button>
   			{% endbuttons %}
-	        
+
 	        </form>
 	{% endif %}
 	</p>
-		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>	
-		
+		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>
+
 		{{tarea.descripcion|markdown}} <br>
 
 		{% block arriba %}
@@ -36,14 +38,12 @@
 	<!-- Contenedor Principal -->
     <div class="comments-container">
     	<h1>Comentarios </h1>
-	
-		
+
+
 		<ul id="comments-list" class="comments-list">
 		{% for c in comentarios %}
             <li>
 				<div class="comment-main-level">
-					
-
 
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
@@ -67,21 +67,21 @@
 	</div>
 </div>
 
-		
-		
+
+
 		{% endblock %}
 
 
 		<div>
 
 
-	   
+
       		 	{% block submit %}Comentar
-      		 	{% endblock %} 
+      		 	{% endblock %}
 
 
 {{block.super}}
 	</div>
 	{% endblock content %}
-  
+
 

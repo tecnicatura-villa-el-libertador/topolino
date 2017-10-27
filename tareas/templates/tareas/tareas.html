@@ -21,12 +21,20 @@
 		    {% if tareas %}
 	             	<thead>
 	                  <tr>
-		              	  <th><a href="?o=titulo&s={{s}}">Titulo</a>{% if o == "titulo" %}{% if s == "asc" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
-		                  <th><a href="?o=usuario&s={{s}}"">Autor</a></th>
-		                  <th><a href="?o=fecha_creacion&s={{s}}">Fecha</a></th>
-		                  <th><a href="?o=categoria__nombre&s={{s}}"">Categoria</a></th>
-		                  <th><a href="?o=prioridad&s={{s}}"">Prioridad</a></th>
-	                          <th><a href="?o=estado&s={{s}}"">Estado</a></th>                                       
+		              	  <th><a href="?o=titulo&s={{s}}">Titulo</a>{% if o == "titulo" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+
+		                  <th><a href="?o=usuario&s={{s}}">Autor</a>{% if o == "usuario" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+
+
+		                  <th><a href="?o=fecha_creacion&s={{s}}">Fecha</a>{% if o == "fecha_creacion" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+		                  <th><a href="?o=categoria__nombre&s={{s}}">Categoria</a>{% if o == "categoria__nombre" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+
+		                  <th><a href="?o=prioridad&s={{s}}">Prioridad</a>{% if o == "prioridad" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+
+	                          <th><a href="?o=estado&s={{s}}">Estado</a>{% if o == "estado" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+
+	                      <th><a href="?o=asignado&s={{s}}">Asignado</a>{% if o == "asignado" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
+
 	                 	</tr>
 	              	</thead>   
 	              <tbody>
@@ -44,7 +52,10 @@
 	                    	<td><span class="label label-success">Baja</span></td>
 	                    {% endif %}
 	                    <td><span class="label label-default">{{tarea.estado}}</span>
-	                    </td>                                       
+	                    </td>
+	                    <td><span class="label label-default">{{tarea.asignado}}</span>
+	                    </td>
+
 	                </tr>
 	              {% endfor %}  
 	 	    
