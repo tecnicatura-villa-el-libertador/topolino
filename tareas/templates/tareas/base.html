@@ -7,12 +7,22 @@
         <link rel="stylesheet" href="{% static 'css/tareas.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         {% block css %}{% endblock %}
-        {% block extrahead %}{% endblock %} 
+        {% block extrahead %}{% endblock %}
         <title>{% block titulo %}{% endblock %}</title>
     </head>
     <body>
-    {% bootstrap_messages %}    
+    {% bootstrap_messages %}
     <div class="page-header">
+
+
+        {% block crear_tarea%}
+        {% if request.user.is_authenticated %}
+            <div class="crear_tarea pull-right"><a class="btn btn-default" href="/crear_tarea">Crear tareas</a></div>
+        {% endif %}
+        {% endblock %}
+            <h3>Topolino - Sistema de gestión de tareas</h3>
+
+
 	 {% block detalle_tarea %}{% endblock %}
         {% block header %}
           <div class="tarea_titulo">{{tarea.titulo}}</div>
@@ -20,7 +30,7 @@
         {% if request.user.is_authenticated %}
             <div class="cerrar_sesion"><a href="/accounts/logout/">Cerrar Sesion</a></div>
         {% endif %}
-        {% block crear_tarea%}<div class="crear_tarea"><a href="/crear_tarea">Crear tareas</a></div>{% endblock %}
+
     </div>
 
 	 {% block content %}
