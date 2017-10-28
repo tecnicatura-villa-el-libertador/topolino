@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Categoria,Comentario,Tarea
-from .forms import ComentarioForm, TareaForm, Tarea_estado, BuscarForm
+from .forms import ComentarioForm, TareaForm, Tarea_estado, BuscarForm, RegistroForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
