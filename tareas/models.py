@@ -4,7 +4,7 @@ from pagedown.widgets import PagedownWidget
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.core.mail import send_mail
 
 class Tarea(models.Model):
     URGENTE=10
@@ -55,4 +55,13 @@ class Comentario(models.Model):
 
 @receiver(post_save)
 def my_callback(sender, instance, **kwargs):
-    print("llego señal post save", instance)
+    
+    if isinstance(instance, Comentario):
+
+        a=  instance.tarea.usuario.email
+        b=  instance.tarea.asignado.email
+        c=instance.usuario.email
+        
+        send_mail('NUEVO COMENTARIO', "se realizo un comentario", 'gustavo_avila_97@outlook.com', [a, b], fail_silently=False)
+    
+        
