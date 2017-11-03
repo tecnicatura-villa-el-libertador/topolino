@@ -129,3 +129,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGOUT_REDIRECT_URL='/tareas/'
 
 LOGIN_REDIRECT_URL='/tareas/'
+
+try:
+    from .local_settings import *
+except:
+    pass
