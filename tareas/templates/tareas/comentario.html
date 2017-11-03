@@ -1,6 +1,6 @@
 
 {% extends 'tareas/forms.html' %}
-{% load bootstrap3 staticfiles markdown_deux_tags %}
+{% load bootstrap3 staticfiles markdown_deux_tags poll_extras %}
 
 {% block content-size %}col-md-8 col-md-offset-2{% endblock content-size %}
 
@@ -8,8 +8,8 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/comentarios.css' %}">
 {% endblock %}
-{% block detalle_tarea %}
-    <div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>
+{% block breadcrumb_links %}
+    <li><a class="active">{{ tarea.titulo }}</a></li>
 {% endblock %}
 
 

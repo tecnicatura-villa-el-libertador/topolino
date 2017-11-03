@@ -1,23 +1,18 @@
 {% extends 'tareas/base.html' %}
 
-    {% block titulo %}TAREAS{% endblock %}
-    {% block detalle_tarea %}<div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>{% endblock %}
+    {% block titulo %}Tareas{% endblock %}
     {% block content %}
 	<div class="container">
 
-	
-	<form method="GET" class="post-form">{{ form.as_p}}
 
 
-		<button type="submit" class="save btn btn-default">{% block submit %}BUSCAR{% endblock %}</button>
 
-   
-    
+
 		<div class="row">
 			<div class="span5">
 	            <table class="table table-striped table-condensed">
-		
-		
+
+
 		    {% if tareas %}
 	             	<thead>
 	                  <tr>
@@ -36,7 +31,7 @@
 	                      <th><a href="?o=asignado&s={{s}}">Asignado</a>{% if o == "asignado" %}{% if s == "des" %}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>{% endif %}{% endif %}</th>
 
 	                 	</tr>
-	              	</thead>   
+	              	</thead>
 	              <tbody>
 	              {% for tarea in tareas %}
 	                <tr>
@@ -57,11 +52,11 @@
 	                    </td>
 
 	                </tr>
-	              {% endfor %}  
-	 	    
-		    {% else %} 
+	              {% endfor %}
+
+		    {% else %}
 			<p>NO SE ENCUENTRA LA TAREA  </p>
-		    {% endif %}                            
+		    {% endif %}
 	              </tbody>
 	            </table>
 	        </div>

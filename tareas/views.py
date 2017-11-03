@@ -14,17 +14,17 @@ def comentario(request,id):
     form = ComentarioForm()
     tarea=get_object_or_404(Tarea, id=id)
     form_estado= Tarea_estado(instance=tarea)
-    
 
-    estado_viejo = tarea.estado 
+
+    estado_viejo = tarea.estado
     if request.method == "POST":
         if 'submit_estado' in request.POST:
-           
-            #import ipdb;ipdb.set_trace  
+
+            #import ipdb;ipdb.set_trace
             form_estado = Tarea_estado(request.POST, instance=tarea)
-             
-            
-            
+
+
+
             if form_estado.is_valid():
                 print(estado_viejo)
                 form_estado.save()
@@ -44,7 +44,7 @@ def comentario(request,id):
                 comentario = form.save(commit=False)
                 comentario.usuario = request.user
                 comentario.tarea = tarea
-               
+
                 comentario.save()
                 return redirect(tarea)
     filtro = request.GET.get('usuario')
@@ -52,7 +52,7 @@ def comentario(request,id):
         comentarios = Comentario.objects.filter(tarea=tarea, usuario__username=filtro).order_by('-fecha')
     else:
         comentarios= Comentario.objects.filter(tarea=tarea).order_by('-fecha')
-    
+
     return render(request,'tareas/comentario.html', {'form':form,'form_estado':form_estado, 'comentarios':comentarios, 'tarea':tarea})
 
 @login_required
@@ -61,8 +61,8 @@ def lista_tareas(request):
     o = request.GET.get("o")
     s=request.GET.get("s")
     tareas = Tarea.objects.all()
-    
-    
+
+
     if s=="des":
         orden='-' + o
         s = "asc"
@@ -107,14 +107,14 @@ def editar_tareas(request):
 
         form = TareaForm(request.POST)
         if form.is_valid():
-        
+
             tarea = form.save(commit=False)
             tarea.usuario = request.user
             tarea.save()
             return redirect(tarea)
     return render(request, "tareas/editar_tareas.html",{"form": form})
 
-  
+
 def buscar(request):
     form=BuscarForm()
     filtro = request.GET.get('titulo')
