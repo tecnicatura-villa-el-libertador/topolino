@@ -15,29 +15,53 @@
 
 	 {% block content %}
 
-    <p>{% if request.user.is_staff %}
-			<form method="POST" class="post-form">{% csrf_token %}
-	        {% bootstrap_form form_estado %}
-  			{% buttons %}
-   			 <button name="submit_estado" type="submit" class="btn btn-primary">
-      		 	MODIFICAR
-      		 </button>
-  			{% endbuttons %}
+        <h1>{{ tarea.titulo }} </h1>
 
-	        </form>
-	{% endif %}
-	</p>
-		 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>
+
+
+
+
+    	 {{tarea.usuario}} {{tarea.fecha_creacion}}<br>
+
+
+    {% if request.user.is_staff or tarea.usuario == request.user %}
+        <a href="{% url 'editar-tarea' tarea.id %}">editar</a>
+    {% endif %}
 
 		{{tarea.descripcion|markdown}} <br>
+
+
+    {% if request.user.is_staff %}
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-7">
+
+            <form method="POST" class="post-form">{% csrf_token %}
+            {% bootstrap_form form_estado %}
+            {% buttons %}
+             <button name="submit_estado" type="submit" class="btn btn-primary">
+                MODIFICAR
+             </button>
+            {% endbuttons %}
+
+            </form>
+
+            </div>
+
+        </div>
+    {% endif %}
+
+
 
 		{% block arriba %}
 <div class="container">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <h3>Comentarios </h3>
+
 	<div class="row">
 	<!-- Contenedor Principal -->
-    <div class="comments-container">
-    	<h1>Comentarios </h1>
+    <div class="col-md-8">
 
 
 		<ul id="comments-list" class="comments-list">

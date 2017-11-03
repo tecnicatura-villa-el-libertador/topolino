@@ -1,12 +1,19 @@
 {% extends 'tareas/base.html' %}
+{% load bootstrap3 staticfiles markdown_deux_tags %}
+
+{% block breadcrumb_links %}
+    {% if tarea %}
+        <li><a href="{% url 'detalle-tarea' tarea.id %}">{{ tarea.titulo }}</a></li>
+        <li><a class="active">Editar</a></li>
+    {% else %}
+         <li><a class="active">Crear nueva tarea</a></li>
+    {% endif %}
+{% endblock breadcrumb_links %}
+
 	{% block titulo %}CREAR TAREA{% endblock %}
-    {% load bootstrap3 staticfiles markdown_deux_tags %}
-	{% block header %}CREAR TAREA{% endblock %}
-    {% block extrahead %}{{ form.media}} 	{% endblock %} 
-{% block detalle_tarea %}
-	<div class="titulo_tareas"><a href="/tareas">TAREAS</a></div>
-    {% endblock %}
-  {% block crear_tarea%}{% endblock %}  
+
+    {% block extrahead %}{{ form.media}} 	{% endblock %}
+  {% block crear_tarea%}{% endblock %}
  {% block content %}
 	<div>
 

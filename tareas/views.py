@@ -100,19 +100,24 @@ def register(request):
 def home(request):
     return redirect('/login/')
 
-def editar_tareas(request):
-    form= TareaForm()
+
+def editar_tareas(request, id_tarea=None):
+    if id_tarea:
+        tarea = get_object_or_404(Tarea, id=id_tarea)
+    else:
+        tarea = None
+
+    form = TareaForm(instance=tarea)
 
     if request.method == "POST":
-
-        form = TareaForm(request.POST)
+        form = TareaForm(request.POST, instance=tarea)
         if form.is_valid():
 
             tarea = form.save(commit=False)
             tarea.usuario = request.user
             tarea.save()
             return redirect(tarea)
-    return render(request, "tareas/editar_tareas.html",{"form": form})
+    return render(request, "tareas/editar_tareas.html", {"form": form, 'tarea': tarea})
 
 
 def buscar(request):

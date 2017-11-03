@@ -11,7 +11,7 @@ class Comentarios(forms.ModelForm):
           model= Comentario
           fields=['texto']
 
-class RegistroForm(UserCreationForm): 
+class RegistroForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username","first_name","last_name","email")
@@ -20,7 +20,7 @@ class RegistroForm(UserCreationForm):
 # creo un formulario con el campo texto para mostrar
 class ComentarioForm(forms.ModelForm):
 
-    texto = forms.CharField(widget=PagedownWidget(show_preview=False))
+    texto = forms.CharField(label="", widget=PagedownWidget(show_preview=False))
     class Meta:
         model = Comentario
         fields=['texto']
@@ -35,7 +35,7 @@ class Tarea_estado(forms.ModelForm):
 	class Meta:
 		model = Tarea
 		fields= ['estado']
-	
+
 class BuscarForm(forms.Form):
 	buscar= forms.CharField(max_length=50)
 

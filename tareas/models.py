@@ -15,7 +15,7 @@ class Tarea(models.Model):
     EN_CURSO = 'En curso'
     PENDIENTE = 'Pendiente'
     FINALIZADO = 'Finalizado'
-    
+
     RANGO_DE_ESTADOS = ((INVALIDO,'Invalido'),(EN_CURSO,'En curso'),(PENDIENTE,'Pendiente'),(FINALIZADO,'Finalizado'))
     usuario = models.ForeignKey(User)
     categoria = models.ForeignKey('Categoria')
@@ -33,7 +33,7 @@ class Tarea(models.Model):
     @property
     def esta_finalizado(self):
         return self.estado == Tarea.FINALIZADO
-        
+
     def get_absolute_url(self):
         return '/tareas/{}/'.format(self.id)
 
